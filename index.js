@@ -60,8 +60,6 @@ app.post("/update_post/:id", (req, res) =>{
 
 app.post("/delete_post/:id", (req, res) =>{
     const id = parseInt(req.params.id);
-
-    // Find the index of the blog post with the given id
     const index = blogs.findIndex(blog => blog.id === id);
 
     if (index !== -1) {

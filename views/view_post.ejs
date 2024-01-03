@@ -71,9 +71,7 @@
         })
           .then((response) => response.json())
           .then((data) => {
-            // Handle the response as needed
             console.log(data);
-            // Refresh the page or update the UI accordingly
             location.reload();
           })
           .catch((error) => console.error("Error:", error));
