@@ -15,6 +15,7 @@
     margin: 20px;
     background-color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
   }
 
   /* Style the blog title */
@@ -30,14 +31,53 @@
     font-size: 16px;
     line-height: 1.5;
   }
+  .icons {
+    margin-left: 650px;
+  }
+  .i1 {
+    margin-right: 2px;
+    cursor: pointer;
+  }
+  .i2 {
+    margin-left: 5px;
+    cursor: pointer;
+  }
 </style>
 <body>
   <div class="container">
     <% locals.todaysBlog.forEach(blog => { %>
     <div class="blog-style">
+      <div class="icons">
+        <i
+          class="material-icons i1"
+          onclick="location.href='/update_post/<%= blog.id %>'"
+          >edit</i
+        >
+        <i class="material-icons i2" onclick="deletePost(`<%= blog.id %>`)"
+          >delete</i
+        >
+      </div>
       <h3><%= blog.title %></h3>
       <p><%= blog.content %></p>
     </div>
     <% }); %>
   </div>
+
+  <script>
+    function deletePost(postId) {
+      if (confirm("Are you sure you want to delete this post?")) {
+        fetch(`/delete_post/${postId}`, {
+          method: "POST",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Handle the response as needed
+            console.log(data);
+            // Refresh the page or update the UI accordingly
+            location.reload();
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    }
+  </script>
 </body>

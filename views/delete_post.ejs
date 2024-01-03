@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') %>
+
+<style>
+  /* Apply styles to the container */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Style each individual blog item */
+  .blog-style {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px;
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Style the blog title */
+  .blog-style h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  /* Style the blog content */
+  .blog-style p {
+    color: gray;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <% locals.deletedPost&&locals.todaysBlog.forEach(blog => { %>
+    <div class="blog-style">
+      <h3><%= blog.title %></h3>
+      <p><%= blog.content %></p>
+    </div>
+    <% }); %>
+  </div>
+</body>

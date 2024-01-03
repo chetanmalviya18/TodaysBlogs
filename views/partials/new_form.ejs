@@ -1,17 +1,19 @@
 <style>
-  h3 {
+  body {
+    background-color: #3f3e3e;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  h2 {
     font-family: cursive;
     font-size: 30px;
     color: gray;
     text-align: center;
     margin-top: 90px;
   }
-  .form {
-    max-width: 200px;
-    margin: auto;
-    padding: 20px;
-    border: 3px grey solid;
-    border-radius: 10px;
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
   }
   label {
     display: block;
@@ -20,7 +22,6 @@
     font-family: cursive;
   }
   input {
-    /* width: 100%; */
     padding: 8px;
     margin-bottom: 16px;
     border: none;
@@ -45,6 +46,10 @@
     color: white;
     font-weight: bold;
   }
+  input,
+  textarea {
+    width: 100%;
+  }
   @media (max-width: 768px) {
     form {
       max-width: 768px;
@@ -52,19 +57,21 @@
   }
 </style>
 <body>
-  <h3>New Post</h3>
-  <form action="/new_post" method="post" class="form">
-    <label for="postTile">Title:</label>
-    <input type="text" name="postTile" placeholder="Enter Title" required />
+  <div class="form-container">
+    <h2>New Post</h2>
+    <form action="/new_post" method="post" class="form">
+      <label for="postTile">Title:</label>
+      <input type="text" name="postTile" placeholder="Enter Title" required />
 
-    <label for="postContent">Post:</label>
-    <textarea
-      name="postContent"
-      cols="20"
-      placeholder="Enter content"
-      required
-    ></textarea>
+      <label for="postContent">Post:</label>
+      <textarea
+        name="postContent"
+        rows="8"
+        placeholder="Enter content"
+        required
+      ></textarea>
 
-    <button type="submit">Publish</button>
-  </form>
+      <button type="submit">Publish</button>
+    </form>
+  </div>
 </body>
